@@ -12,7 +12,7 @@ type Watchdog struct {
 	Objects  []WatchObject
 }
 
-func recursDir(objects *[]WatchObject, rootPath string, dir []fs.DirEntry, i int) *[]WatchObject {
+func sniffDirObjects(objects *[]WatchObject, rootPath string, dir []fs.DirEntry, i int) *[]WatchObject {
 	if len(dir) < 1 {
 		return objects
 	}
@@ -26,7 +26,7 @@ func recursDir(objects *[]WatchObject, rootPath string, dir []fs.DirEntry, i int
 	itemFullPath := fmt.Sprintf("%s/%s", rootPath, item.Name())
 	if item.IsDir() {
 		nestedDir, _ := os.ReadDir(itemFullPath)
-		objects = recursDir(objects, itemFullPath, nestedDir, 0)
+		objects = sniffDirObjects(objects, itemFullPath, nestedDir, 0)
 	} else {
 		*objects = append(*objects, WatchObject{
 			Name:        itemFullPath,
@@ -37,7 +37,7 @@ func recursDir(objects *[]WatchObject, rootPath string, dir []fs.DirEntry, i int
 	if i+1 >= len(dir) {
 		return objects
 	}
-	return recursDir(objects, rootPath, dir, i+1)
+	return sniffDirObjects(objects, rootPath, dir, i+1)
 }
 
 func NewWatchdog(rootPath string) *Watchdog {
@@ -50,7 +50,7 @@ func NewWatchdog(rootPath string) *Watchdog {
 		}
 	}
 
-	objects := recursDir(&[]WatchObject{}, rootPath, dir, 0)
+	objects := sniffDirObjects(&[]WatchObject{}, rootPath, dir, 0)
 	for _, obj := range *objects {
 		fmt.Printf("%s\n", obj.Name)
 	}
