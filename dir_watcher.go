@@ -24,6 +24,11 @@ func NewDirWatcher(path string) DirWatcher {
 	}
 }
 
+var fileToIgnore = []string{
+	"*.env.*", // needs supports for pattern matching.
+	".secret",
+}
+
 func (w *DirWatcher) Watch(callback func()) error {
 	// first make sure the directory exists
 	dir, err := os.ReadDir(w.Path)
@@ -86,4 +91,9 @@ func (w *DirWatcher) addToFilesList(f File) {
 		}
 	}
 	w.Files = append(w.Files, f)
+}
+
+// this would determine whether the watcher should ignore the file or not.
+func (w *DirWatcher) shouldIgnore(f File) {
+	// TODO: need regex for patter matching.
 }
