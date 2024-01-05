@@ -1,4 +1,4 @@
-module github.com/sifatulrabb/go-file-watcher
+module github.com/sifatulrabb/filepatrol
 
 go 1.21.4
 

@@ -1,7 +1,7 @@
 .PHONY: run build
 
 run:
-	go run ./*.go
+	go run ./cmd/filepatrol/*.go
 
 build:
 	mkdir -p build
