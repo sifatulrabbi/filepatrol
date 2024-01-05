@@ -1,16 +1,18 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/sifatulrabb/filepatrol"
+	"github.com/sifatulrabb/filepatrol/cli"
 )
 
 func main() {
-	watcher := filepatrol.NewWatchdog("tmp")
-	watcher.StartWatching(changeHandler)
+	rootPath, command := cli.ParseUserInput()
+	watcher := filepatrol.NewWatchdog(rootPath)
+	watcher.StartWatching(changeHandler(command))
 }
 
-func changeHandler(files []string) {
-	fmt.Println("files changed:", files)
+func changeHandler(command string) func(files []string) {
+	return func(files []string) {
+		cli.CommandExecutor(command)
+	}
 }

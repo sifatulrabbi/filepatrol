@@ -1,8 +1,8 @@
 .PHONY: run build
 
-run:
-	go run ./cmd/filepatrol/*.go
+test-run:
+	go run cmd/filepatrol/main.go tmp echo 'hello'
 
 build:
 	mkdir -p build
-	go build -o build/go-file-watcher
+	go build -o build/filepatrol
