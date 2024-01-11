@@ -1,27 +1,28 @@
 package cli
 
 import (
-	"errors"
+	"flag"
 	"fmt"
 	"log"
-	"os"
 	"os/exec"
-	"strings"
 )
 
-// returns (rootPath, command)
-func ParseUserInput() (string, string) {
-	args := os.Args[1:]
-	// sample command
-	// filepatrol ./tmp echo "hello"
-	if len(args) < 3 {
-		panic(errors.New("your command if not properly formatted"))
+const STATIC_SRERVER_TYPE = "filepatrol.http"
+
+// returns (execType, rootPath, command)
+func ParseUserInput() (string, string, string) {
+	rootPath := flag.String("path", ".", "Path to the root directory. Default is '.'")
+	cmd := flag.String("cmd", "", "Enter the command you want to execute on file change.")
+	execType := flag.String("exec", "command", "Enter the executioner type. Default is 'command'. Use 'filepatrol.http' for static server")
+
+	flag.Parse()
+	fmt.Printf("execType = %s, rootPath = %s, cmd = %s\n", *execType, *rootPath, *cmd)
+
+	if *execType != STATIC_SRERVER_TYPE && *cmd == "" {
+		log.Fatalln("Please provide '--cmd'")
 	}
 
-	rootPath := args[0]
-	command := strings.Join(args[1:], " ")
-
-	return rootPath, command
+	return *execType, *rootPath, *cmd
 }
 
 func CommandExecutor(command string) {
