@@ -4,8 +4,8 @@ A lightweight, real-time file system watcher. It triggers custom user commands u
 
 # Todo
 
-- [ ] watches for changes in a dir or in a file.
-    - [ ] also watches for changes in the dirs within the parent dir.
-- [ ] runs a user command when any changes are noticed.
 - [ ] ignores user specified files or .gitignore files if a .gitignore is present in the dir.
-- [ ] uses a cli to get user input
+- [x] watches for changes in a dir or in a file.
+    - [x] also watches for changes in the dirs within the parent dir.
+- [x] runs a user command when any changes are noticed.
+- [x] uses a cli to get user input
