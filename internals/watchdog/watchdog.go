@@ -1,4 +1,4 @@
-package filepatrol
+package watchdog
 
 import (
 	"fmt"

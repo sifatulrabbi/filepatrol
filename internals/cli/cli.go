@@ -6,7 +6,7 @@ import (
 	"log"
 	"os/exec"
 
-	"github.com/sifatulrabb/filepatrol/statichttp"
+	"github.com/sifatulrabb/filepatrol/internals/statichttp"
 )
 
 // returns (execType, rootPath, command)
