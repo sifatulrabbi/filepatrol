@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"log"
 	"os/exec"
-)
 
-const STATIC_SRERVER_TYPE = "filepatrol.http"
+	"github.com/sifatulrabb/filepatrol/statichttp"
+)
 
 // returns (execType, rootPath, command)
 func ParseUserInput() (string, string, string) {
@@ -18,7 +18,7 @@ func ParseUserInput() (string, string, string) {
 	flag.Parse()
 	fmt.Printf("execType = %s, rootPath = %s, cmd = %s\n", *execType, *rootPath, *cmd)
 
-	if *execType != STATIC_SRERVER_TYPE && *cmd == "" {
+	if *execType != statichttp.STATIC_SRERVER_TYPE && *cmd == "" {
 		log.Fatalln("Please provide '--cmd'")
 	}
 

@@ -8,6 +8,8 @@ import (
 	"net/http"
 )
 
+const STATIC_SRERVER_TYPE = "http"
+
 var srv http.Server
 
 func RunStaticHttpServer(rootPath string) func(files []string) {

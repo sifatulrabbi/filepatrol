@@ -6,13 +6,11 @@ import (
 	"github.com/sifatulrabb/filepatrol/statichttp"
 )
 
-const STATIC_SRERVER_TYPE = "filepatrol.http"
-
 func main() {
 	execType, rootPath, command := cli.ParseUserInput()
 	watcher := filepatrol.NewWatchdog(rootPath)
 
-	if execType == STATIC_SRERVER_TYPE {
+	if execType == statichttp.STATIC_SRERVER_TYPE {
 		watcher.StartWatching(statichttp.RunStaticHttpServer(rootPath))
 	} else {
 		watcher.StartWatching(changeHandler(command))

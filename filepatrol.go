@@ -22,7 +22,7 @@ func sniffDirObjects(objects *WatchObjects, rootPath string, dir []fs.DirEntry, 
 
 	item, err := dir[i].Info()
 	if item == nil || err != nil {
-		log.Println("Error occurred:", err)
+		log.Println("Difficulty when patrolling due to:", err)
 		return objects
 	}
 
@@ -59,7 +59,7 @@ func NewWatchdog(rootPath string) *Watchdog {
 }
 
 func (wdog *Watchdog) StartWatching(bark func(files []string)) {
-	fmt.Println("Watch dog has started monitoring files")
+	fmt.Println("Watch dog has started patrolling files...")
 
 	for {
 		changedFiles := []string{}

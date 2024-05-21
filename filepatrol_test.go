@@ -14,7 +14,7 @@ func TestCollectingDirItems(t *testing.T) {
 
 func TestWatchingFiles(t *testing.T) {
 	watcher := NewWatchdog("../..")
-	watcher.StartWatching(func(files []string) {
+	go watcher.StartWatching(func(files []string) {
 		fmt.Println("files changed", files)
 	})
 
