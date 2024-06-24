@@ -8,7 +8,35 @@ While developing my portfolio's API, I continuously restarted my [portfolio serv
 
 ## Installation
 
-_Coming soon..._
+Currently `filepatrol` is only available if you have Go installed in your system APT, AUR, and Brew versions are coming soon.
+
+### Install and set up Go
+
+To install Go on your system follow the [official instructions](https://go.dev/doc/install). After installing Go on your system follow these following instructions to make sure your system is able to use any installed go packages from it's terminal (bash/zsh/fish).
+
+If you are using `bash`
+
+```bash
+echo 'export GOPATH=$HOME/go' >> ~/.bashrc
+echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
+echo 'export PATH=$PATH:$GOBIN' >> ~/.bashrc
+source ~/.bashrc
+```
+
+If you are using `bash`
+
+```bash
+echo 'export GOPATH=$HOME/go' >> ~/.zsh
+echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.zsh
+echo 'export PATH=$PATH:$GOBIN' >> ~/.zsh
+source ~/.zshrc
+```
+
+### Install filepatrol as a CLI tool
+
+```bash
+go install github.com/sifatulrabbi/filepatrol@latest
+```
 
 ## Usage
 
