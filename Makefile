@@ -10,3 +10,5 @@ test-run:
 test-run-http:
 	go run cmd/filepatrol/main.go --path tmp --exec http
 
+list:
+	GOPROXY=proxy.golang.org go list -m github.com/sifatulrabbi/filepatrol@v0.3.0-beta.1

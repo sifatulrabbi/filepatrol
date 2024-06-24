@@ -1,4 +1,4 @@
-module github.com/sifatulrabb/filepatrol
+module github.com/sifatulrabbi/filepatrol
 
 go 1.21.4
 
