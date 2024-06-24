@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/sifatulrabb/filepatrol/internals/cli"
-	"github.com/sifatulrabb/filepatrol/internals/statichttp"
-	"github.com/sifatulrabb/filepatrol/internals/watchdog"
+	"github.com/sifatulrabbi/filepatrol/internals/cli"
+	"github.com/sifatulrabbi/filepatrol/internals/statichttp"
+	"github.com/sifatulrabbi/filepatrol/internals/watchdog"
 )
 
 func main() {
